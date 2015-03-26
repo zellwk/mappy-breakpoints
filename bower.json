@@ -1,0 +1,22 @@
+{
+  "name": "mappy-breakpoints",
+  "version": "0.1.0",
+  "authors": [
+    "Zell Liew <zellwk@gmail.com>"
+  ],
+  "keywords": [
+    "breakpoints",
+    "sass",
+    "sass-maps",
+    "maps"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
