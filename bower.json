@@ -4,6 +4,7 @@
   "authors": [
     "Zell Liew <zellwk@gmail.com>"
   ],
+  "main": "_mappy-breakpoints.scss",
   "keywords": [
     "breakpoints",
     "sass",
