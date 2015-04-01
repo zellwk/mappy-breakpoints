@@ -15,11 +15,11 @@ $breakpoints: (
 }
 ~~~
 
-This will automatically create a media query plus convert it into rem at the same time. It will also minus off 1px from the `max-width` query to ensure that your breakpoints don't overlap each other. 
+This will automatically create a media query plus convert it into em at the same time. It will also minus off 1px from the `max-width` query to ensure that your breakpoints don't overlap each other. 
 
 ~~~css
 /* output */
-@media all and (min-width: 20rem) and (max-width: 57.4375rem) {
+@media all and (min-width: 20em) and (max-width: 57.4375em) {
   // stuff 
 }
 ~~~
@@ -65,7 +65,7 @@ Mappy-breakpoints focuses on three types of queries.
 
 Width queries are the most common type of queries. You can call for width queries by simply entering the map key or the breakpoint. 
 
-Mappy breakpoints will also automatically convert the queries into the `rem` unit by using the a `$base-font-size` variable that defaults to 16px.
+Mappy breakpoints will also automatically convert the queries into the `em`. 
 
 If only one value is provided, mappy-breakpoints will produce a `min-width` query. 
 
@@ -77,7 +77,7 @@ If only one value is provided, mappy-breakpoints will produce a `min-width` quer
 }
 
 // Translates into 
-@media all and (min-width: 20rem) {
+@media all and (min-width: 20em) {
   // stuff 
 }
 ~~~
@@ -92,7 +92,7 @@ If a two values are provided, mappy-breakpoints will produce a `min-width` and `
 }
 
 // Translates into
-@media all and (min-width: 20rem) and (max-width: 57.4375rem) {
+@media all and (min-width: 20em) and (max-width: 57.4375em) {
   //stuff 
 }
 ~~~
@@ -108,7 +108,7 @@ If a `max-width` or `max` string is provided, `mappy-breakpoints()` will produce
 }
 
 // Translates into
-@media all and (max-width: 19.9375rem) {
+@media all and (max-width: 19.9375em) {
   // stuff
 }
 ~~~
@@ -127,7 +127,7 @@ It can use the same `$breakpoints` map as well.
 }
 
 // Translates into 
-@media all and (min-height: 20rem) {
+@media all and (min-height: 20em) {
   // stuff 
 }
 
@@ -138,7 +138,7 @@ It can use the same `$breakpoints` map as well.
 }
 
 // Translates into
-@media all and (min-height: 20rem) and (max-height: 57.4375rem) {
+@media all and (min-height: 20em) and (max-height: 57.4375em) {
   //stuff 
 }
 ~~~
@@ -154,7 +154,7 @@ If a `max-height` or `max` string is provided, `mappy-breakpoints()` will produc
 }
 
 // Translates into
-@media all and (max-height: 19.9375rem) {
+@media all and (max-height: 19.9375em) {
   // stuff
 }
 ~~~
@@ -188,7 +188,7 @@ All 3 types of queries can be combined to form one complex query. Write it in or
 }
 
 // Translates into
-@media all and (min-width: 20rem) and (max-width: 57.4375rem) and (min-height: 20rem) and (max-height: 57.4375rem) and (orientation: portrait) {
+@media all and (min-width: 20em) and (max-width: 57.4375em) and (min-height: 20em) and (max-height: 57.4375em) and (orientation: portrait) {
   // stuff
 }
 ~~~

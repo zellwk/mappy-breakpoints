@@ -5,7 +5,6 @@
 // 
 // @author Zell Liew      
 // =================
-$base-font-size: 16px !default;
 $breakpoints: () !default;
 
 // Mappy BP [Mixin]
@@ -69,7 +68,7 @@ $breakpoints: () !default;
 
   // Check for width queries
   @if $_minw {
-    $_minw: mappy-convert-to-rem($_minw);
+    $_minw: mappy-convert-to-em($_minw);
     $_return: map-merge($_return, (min-width: $_minw));
     $queries: set-nth($queries, 1, null);
   }
@@ -81,7 +80,7 @@ $breakpoints: () !default;
   }
 
   @if $_maxw {
-    $_maxw: mappy-convert-to-rem($_maxw - 1px);
+    $_maxw: mappy-convert-to-em($_maxw - 1px);
     $_return: map-merge($_return, (max-width: $_maxw));
     $queries: set-nth($queries, 2, null);
   }
@@ -93,7 +92,7 @@ $breakpoints: () !default;
     $_minh: mappy-validate($_minh, $breakpoints);
 
     @if $_minh {
-      $_minh: mappy-convert-to-rem($_minh);
+      $_minh: mappy-convert-to-em($_minh);
       $_return: map-merge($_return, (min-height: $_minh));
       $queries: set-nth($queries, $_h + 1, null);
     }
@@ -105,7 +104,7 @@ $breakpoints: () !default;
     }
 
     @if $_maxh {
-      $_maxh: mappy-convert-to-rem($_maxh - 1px);
+      $_maxh: mappy-convert-to-em($_maxh - 1px);
       $_return: map-merge($_return, (max-height: $_maxh));
       $queries: set-nth($queries, $_h + 2, null);
     }
@@ -159,13 +158,13 @@ $breakpoints: () !default;
   @return $_return;
 }
 
-// Mappy Convert To Rem [Function]
+// Mappy Convert To Em [Function]
 // -------------------------------
-// Checks and converts px values to rem. Leave other units untouched.
+// Checks and converts px values to em. Leave other units untouched.
 
-@function mappy-convert-to-rem($val) {
+@function mappy-convert-to-em($val) {
   @if unit($val) == "px" or $val == 0 {
-    @return mappy-rem($val);
+    @return mappy-em($val);
   }
 
   @else {
@@ -173,13 +172,13 @@ $breakpoints: () !default;
   }
 }
 
-// Mappy Rem [Function]
+// Mappy Em [Function]
 // --------------------
-// Converts pixels to rem with $base-font-size
+// Converts pixels to em with $base-font-size
 // - https://gist.github.com/ijy/1441967
-@function mappy-rem($target, $context: $base-font-size) {
+@function mappy-em($target, $context: 16px) {
   @if $target == 0 {
     @return 0;
   }
-  @return $target / $context + 0rem;
+  @return $target / $context + 0em;
 }
