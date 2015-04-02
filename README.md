@@ -215,3 +215,9 @@ if `$query-fallback` is set to the `'ie8` string, then mappy breakpoints create 
 ~~~ 
 
 Finally, `$breakpoints` determines which map to use for the width and height queries. It defaults to `$breakpoints`. 
+
+## Changelog 
+
+#### v0.1.2 
+
+- Changed media queries into em unit instead of rem unit
