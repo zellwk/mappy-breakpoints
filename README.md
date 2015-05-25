@@ -218,6 +218,10 @@ Finally, `$breakpoints` determines which map to use for the width and height que
 
 ## Changelog 
 
+#### v0.1.3 
+
+- Fixed error "Incompatible units: ‘em’ and ‘px/px’"
+
 #### v0.1.2 
 
 - Changed media queries into em unit instead of rem unit
