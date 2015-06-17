@@ -29,7 +29,7 @@ This will automatically create a media query plus convert it into em at the same
 You can install mappy-breakpoints via Bower 
 
 ~~~bash
-bower install mappy-breakpoints --save 
+$ bower install mappy-breakpoints --save 
 ~~~
 
 Then import it in your stylesheet: 
@@ -37,6 +37,12 @@ Then import it in your stylesheet:
 ~~~scss
 // scss
 @import "path-to-bower_components/mappy-breakpoints/mappy-breakpoints";
+~~~
+
+You can also install mappy-breakpoints via NPM as well 
+
+~~~bash
+$ npm install mappy-breakpoints --save
 ~~~
 
 Alternatively, you can download this mixin add import it directly into your stylesheet. 
