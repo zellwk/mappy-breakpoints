@@ -6,6 +6,7 @@
 // @author Zell Liew      
 // =================
 $breakpoints: () !default;
+$mappy-queries: () !default;
 
 // Mappy BP [Mixin]
 // ----------------
@@ -15,7 +16,55 @@ $breakpoints: () !default;
 // - $query-fallback  : <string> selector class
 // - $breakpoints     : <map>
 @mixin mappy-bp($queries, $type: all, $query-fallback: null, $breakpoints: $breakpoints) {
+
+  // Gets mappy map through mappy-bp fn
+  $mappy-map: mappy-bp($queries, $type, $query-fallback, $breakpoints);
+
+  // Outputs media string
+  @media #{map-get($mappy-map, type)} and #{map-get($mappy-map, media-string)} {
+    @content;
+  }
+
+  // If a query fallback is provided
+  @if $query-fallback {
+    #{$query-fallback} & {
+      @content;
+    }
+  }
+}
+
+// Mappy Query [Mixin]
+// -------------------
+// Output query from $mappy-queries map. 
+// $query : <string> from $mappy-queries key
+@mixin mappy-query($query, $mappy-queries: $mappy-queries) {
+  @if not map-has-key($mappy-queries, $query) {
+    @error "#{$mappy-queries} does not contain #{$query}";
+  }
+
+  $mappy-map: map-get($mappy-queries, $query);
+
+  @media #{map-get($mappy-map, type)} and #{map-get($mappy-map, media-string)} {
+    @content;
+  }
+
+  // If a query fallback is provided
+  @if map-get($mappy-map, query-fallback) {
+    #{map-get($mappy-map, query-fallback)} & {
+      @content;
+    }
+  }
+}
+
+// Mappy BP [Function]
+// -------------------
+// Returns a map with 3 keys
+// - type           : Media type
+// - media-string   : media query string
+// - query-fallback : query fallback (if any)
+@function mappy-bp($queries, $type: all, $query-fallback: null, $breakpoints: $breakpoints, $mappy-queries: $mappy-queries) {
   $media-string: ();
+  $_return: ();
   $media-map: parse-bp($queries, $breakpoints);
 
   @each $key, $value in $media-map {
@@ -29,17 +78,13 @@ $breakpoints: () !default;
       }
     }
   }
+  $_return: (
+    type: $type, 
+    media-string: $media-string, 
+    query-fallback: $query-fallback
+  );
 
-  @media #{$type} and #{$media-string} {
-    @content;
-  }
-
-  // If a query fallback is provided
-  @if $query-fallback {
-    #{$query-fallback} & {
-      @content;
-    }
-  }
+  @return $_return;
 }
 
 // BP [Mixin]
@@ -62,6 +107,7 @@ $breakpoints: () !default;
   $_minh: null;
   $_maxh: null;
   $_length: length($queries);
+
   // Checks for width queries
   $_minw: nth($queries, 1);
   $_minw: mappy-validate($_minw, $breakpoints);
@@ -84,6 +130,7 @@ $breakpoints: () !default;
     $_return: map-merge($_return, (max-width: $_maxw));
     $queries: set-nth($queries, 2, null);
   }
+  
   // Checks for height queries
   $_h: index($queries, h) or index($queries, height);
 

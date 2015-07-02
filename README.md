@@ -49,6 +49,8 @@ Alternatively, you can download this mixin add import it directly into your styl
 
 ## Usage 
 
+### Mappy-breakpoints (Mixin)
+
 Mappy-breakpoints takes in 4 arguments. Only the first one is mandatory. The rest are optional and come with some defaults. 
 
 ~~~scss
@@ -57,7 +59,35 @@ Mappy-breakpoints takes in 4 arguments. Only the first one is mandatory. The res
 }
 ~~~
 
-Most of the time you'll only be working with the first argument. So let's take a deeper dive
+Most of the time you'll only be working with the `$queries` argument. Take a look at the [queries](#queries)section for more info.
+
+### Mappy-query(Mixin) 
+
+Mappy query allows you to use a mappy-bp query that you have saved in the `$mappy-queries` map. This is a convenient function that allows you to store queries for use in multiple areas. 
+
+You'll first need to add a query to `$mappy-queries` with the `mappy-bp` function. 
+
+~~~scss
+$mappy-queries: (
+  phone: mappy-bp(max 500px),
+  tablet: mappy-bp(500px 1000px)
+)
+~~~
+
+Once you have the query stored in the `$mappy-queries` map, you can use it anywhere with the `mappy-query` mixin. 
+
+~~~scss
+@include mappy-query(tablet) {
+  // stuff
+}
+~~~
+
+~~~css
+/* output */
+@media all and (min-width: 31.25em) and (max-width: 6.1875em) {
+  // stuff 
+}
+~~~
 
 ## Queries
 
@@ -105,6 +135,7 @@ If a two values are provided, mappy-breakpoints will produce a `min-width` and `
 
 If a `max-width` or `max` string is provided, `mappy-breakpoints()` will produce a `max-width` query. 
 
+~~~
 // Max Width Query
 // ---------------
 
@@ -223,6 +254,9 @@ if `$query-fallback` is set to the `'ie8` string, then mappy breakpoints create 
 Finally, `$breakpoints` determines which map to use for the width and height queries. It defaults to `$breakpoints`. 
 
 ## Changelog 
+
+#### v0.2.0
+- Added Mappy-query function for [#4](https://github.com/zellwk/mappy-breakpoints/issues/4#issuecomment-117822409)
 
 #### v0.1.3 
 
