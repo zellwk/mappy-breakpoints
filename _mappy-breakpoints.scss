@@ -43,7 +43,7 @@ $mappy-queries: () !default;
   }
 
   $mappy-map: map-get($mappy-queries, $query);
-
+  
   @media #{map-get($mappy-map, type)} and #{map-get($mappy-map, media-string)} {
     @content;
   }
@@ -80,7 +80,7 @@ $mappy-queries: () !default;
   }
   $_return: (
     type: $type, 
-    media-string: $media-string, 
+    media-string: inspect($media-string), 
     query-fallback: $query-fallback
   );
 

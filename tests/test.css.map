@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAeA,sBAAuB;;;;;ECQrB,gCAA6E;IDR/E,sBAAuB;MAMnB,KAAK,EAAE,GAAG;;AAIb,iBAAkB;;;;;ECqBjB,2DAA6E;IDrB9E,iBAAkB;MAMf,KAAK,EAAE,GAAG;;AAId,cAAe;;;;;ECWb,4DAA6E;IDX/E,cAAe;MAMX,KAAK,EAAE,GAAG;;AAId,UAAW;;;;;ECCT,mCAA6E;IDD/E,UAAW;MAMP,KAAK,EAAE,GAAG",
+"sources": ["test.scss","../_mappy-breakpoints.scss"],
+"names": [],
+"file": "test.css"
+}

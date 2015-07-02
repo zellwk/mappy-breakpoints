@@ -63,14 +63,22 @@ Most of the time you'll only be working with the `$queries` argument. Take a loo
 
 ### Mappy-query(Mixin) 
 
-Mappy query allows you to use a mappy-bp query that you have saved in the `$mappy-queries` map. This is a convenient function that allows you to store queries for use in multiple areas. 
+`mappy-query` is a mixin that allows you to use any `mappy-bp` query repeatedly across your site. It requires you to have a `$mappy-queries` map. 
 
-You'll first need to add a query to `$mappy-queries` with the `mappy-bp` function. 
+This `$mappy-queries` map can contain any valid `mappy-bp` values, even if you use identifiers from the `breakpoints` map. 
 
 ~~~scss
+$breakpoints: (
+  small: 480px,
+  large: 800px
+)
+
+// You can use and valid arguments inserted into mappy-bp as the map values. Any of the following would do
 $mappy-queries: (
-  phone: mappy-bp(max 500px),
-  tablet: mappy-bp(500px 1000px)
+  phone: mappy-bp(h max-height small), // media all and (max-height: 29.9375em)
+  tablet: mappy-bp(small large), // @media all and (min-width 30em) and (max-width: 49.375em)
+  desktop: mappy-bp(960px 1200px), // media all and (min-width: 60em) and (max-width: 74.9375em)
+  change-type: mappy-bp(small, type: screen) // media screen and (min-width: 30em)
 )
 ~~~
 
@@ -84,7 +92,7 @@ Once you have the query stored in the `$mappy-queries` map, you can use it anywh
 
 ~~~css
 /* output */
-@media all and (min-width: 31.25em) and (max-width: 6.1875em) {
+  @media all and (min-width: 30em) and (max-width: 49.9375em) {
   // stuff 
 }
 ~~~

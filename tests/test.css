@@ -1,0 +1,37 @@
+.test-mappy-breakpoint {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em)
+   */ }
+  @media all and (min-width: 30em) {
+    .test-mappy-breakpoint {
+      color: red; } }
+
+.test-mappy-query {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em) and (max: width: 49.9375em)
+   */ }
+  @media all and (min-width: 30em) and (max-width: 49.9375em) {
+    .test-mappy-query {
+      color: red; } }
+
+.test-features {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em) and (max-width: 49.9375em) and (min-height: 30em) and (max-height: 49.9375em) and (orientation: portrait)
+   */ }
+  @media all and (min-width: 30em) and (orientation: portrait) {
+    .test-features {
+      color: red; } }
+
+.test-type {
+  /* Expected media string:
+   * ----------------------
+   * @media screen and (min-width: 30em) {
+   */ }
+  @media screen and (min-width: 30em) {
+    .test-type {
+      color: red; } }
+
+/*# sourceMappingURL=test.css.map */

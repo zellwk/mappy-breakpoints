@@ -1,0 +1,54 @@
+@import "../mappy-breakpoints";
+
+$breakpoints: (
+  small: 480px, 
+  large: 800px
+  );
+
+$mappy-queries: (
+  phone : mappy-bp(h max small),
+  tablet: mappy-bp(small large),
+  numbers: mappy-bp(960px 1200px),
+  features: mappy-bp(small orientation portrait),
+  type: mappy-bp(small, $type: screen)
+  );
+
+.test-mappy-breakpoint {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em)
+   */
+  @include mappy-bp(small) {
+    color: red;
+  }
+ }
+
+ .test-mappy-query {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em) and (max: width: 49.9375em)
+   */
+  @include mappy-query(tablet) {
+    color: red;
+  }
+}
+
+.test-features {
+  /* Expected media string:
+   * ----------------------
+   * @media all and (min-width: 30em) and (max-width: 49.9375em) and (min-height: 30em) and (max-height: 49.9375em) and (orientation: portrait)
+   */
+  @include mappy-query(features) {
+    color: red;
+  }
+}
+
+.test-type {
+  /* Expected media string:
+   * ----------------------
+   * @media screen and (min-width: 30em) {
+   */
+  @include mappy-query(type) {
+    color: red;
+  }
+}

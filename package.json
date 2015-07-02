@@ -19,5 +19,18 @@
     "app/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "description": "Mappy Breakpoints is a breakpoint mixin I have hacked together to streamline web development when using a Sass map to hold the breakpoint plugin. [Here's why I made this mixin](http://www.zell-weekeat.com/mappy-breakpoints)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zellwk/mappy-breakpoints.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/zellwk/mappy-breakpoints/issues"
+  },
+  "homepage": "https://github.com/zellwk/mappy-breakpoints#readme"
 }
