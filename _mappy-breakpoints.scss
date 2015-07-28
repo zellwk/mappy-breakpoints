@@ -62,7 +62,7 @@ $mappy-queries: () !default;
 // - type           : Media type
 // - media-string   : media query string
 // - query-fallback : query fallback (if any)
-@function mappy-bp($queries, $type: all, $query-fallback: null, $breakpoints: $breakpoints, $mappy-queries: $mappy-queries) {
+@function mappy-bp($queries, $type: all, $query-fallback: null, $breakpoints: $breakpoints) {
   $media-string: ();
   $_return: ();
   $media-map: parse-bp($queries, $breakpoints);
