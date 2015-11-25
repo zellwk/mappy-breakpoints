@@ -78,7 +78,7 @@ $mappy-queries: (
   phone: mappy-bp(h max-height small), // media all and (max-height: 29.9375em)
   tablet: mappy-bp(small large), // @media all and (min-width 30em) and (max-width: 49.375em)
   desktop: mappy-bp(960px 1200px), // media all and (min-width: 60em) and (max-width: 74.9375em)
-  change-type: mappy-bp(small, type: screen) // media screen and (min-width: 30em)
+  change-type: mappy-bp(small, $type: screen) // media screen and (min-width: 30em)
 )
 ~~~
 
