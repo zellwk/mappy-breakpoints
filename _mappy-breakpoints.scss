@@ -80,7 +80,7 @@ $mappy-queries: () !default;
   }
   $_return: (
     type: $type, 
-    media-string: inspect($media-string), 
+    media-string: $media-string, 
     query-fallback: $query-fallback
   );
 
@@ -171,7 +171,7 @@ $mappy-queries: () !default;
     }
 
     @else if $_key {
-      @warn "Mappy Breakpoints is missing value for media feature "#{$_key}"";
+      @warn unquote('"Mappy Breakpoints is missing value for media feature "#{$_key}""');
     }
     $_i: $_i + 1;
   }
