@@ -80,7 +80,7 @@ $mappy-queries: () !default;
   }
   $_return: (
     type: $type,
-    media-string: inspect($media-string),
+    media-string: implode($media-string),
     query-fallback: $query-fallback
   );
 
@@ -234,4 +234,24 @@ $mappy-queries: () !default;
 
 @function mappy-strip-unit($num) {
   @return $num / ($num * 0 + 1);
+}
+
+// Implode [Function]
+// --------------------
+// Implode a list into a string
+@function implode($list, $glue: ' ') {
+  $res: null;
+  $len: length($list);
+
+  @for $i from 1 through $len {
+    $e: nth($list, $i);
+    @if $i == $len {
+      $res: $res#{$e};
+    }
+    @else {
+      $res: $res#{$e}#{$glue};
+    }
+  }
+
+  @return $res;
 }

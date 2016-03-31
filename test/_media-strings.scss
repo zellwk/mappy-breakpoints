@@ -1,4 +1,3 @@
-
 // Test Media Strings
 @include test-module('Media Queries') {
   @include test('should use $breakpoints map') {
@@ -41,5 +40,12 @@
     $media-string: map-get($mappy-map, media-string);
 
     @include assert-equal($media-string, unquote("(orientation: portrait)"))
+  }
+
+  @include test('should output min-width queries with only one param') {
+    $mappy-map: mappy-bp(100em);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 100em)"))
   }
 }
