@@ -1,0 +1,30 @@
+
+@include test-module('Conversions') {
+  @include test('PX to EM for min-queries') {
+    $mappy-map: mappy-bp(480px, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em)"))
+  }
+
+  @include test('PX to EM for max-queries') {
+    $mappy-map: mappy-bp(max 800px, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(max-width: 49.9375em)"))
+  }
+
+  @include test('em to em') {
+    $mappy-map: mappy-bp(30em, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em)"))
+  }
+
+  @include test('rem to em') {
+    $mappy-map: mappy-bp(30rem, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em)"))
+  }
+}

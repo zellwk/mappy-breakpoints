@@ -1,0 +1,45 @@
+
+// Test Media Strings
+@include test-module('Media Queries') {
+  @include test('should use $breakpoints map') {
+    $mappy-map: mappy-bp(small, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em)"), 'should output min-width query of 30em from "small" key')
+  }
+
+  @include test('should output min-width and max-width queries') {
+    $mappy-map: mappy-bp(small large, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em) and (max-width: 49.9375em)"))
+  }
+
+  @include test('should output min-width and min-height queries') {
+    $mappy-map: mappy-bp(small h small, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em) and (min-height: 30em)"))
+  }
+
+  @include test('should output min-width and max-height queries') {
+    $mappy-map: mappy-bp(small h max large, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-width: 30em) and (max-height: 49.9375em)"))
+  }
+
+  @include test('should output min-height and max-height queries') {
+    $mappy-map: mappy-bp(h small large, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(min-height: 30em) and (max-height: 49.9375em)"))
+  }
+
+  @include test('should output additional queries other than width and height') {
+    $mappy-map: mappy-bp(orientation portrait, $type: all, $query-fallback: null, $breakpoints: $breakpoints);
+    $media-string: map-get($mappy-map, media-string);
+
+    @include assert-equal($media-string, unquote("(orientation: portrait)"))
+  }
+}
