@@ -1,18 +1,18 @@
 // Mappy breakpoints
 // -----------------
-// Output media query with focus on min-width, max-width, min-height and max-height. 
+// Output media query with focus on min-width, max-width, min-height and max-height.
 // Other media rules are passed as the second argument in a map
-// 
-// @author Zell Liew      
+//
+// @author Zell Liew
 // =================
 $breakpoints: () !default;
 $mappy-queries: () !default;
 
 // Mappy BP [Mixin]
 // ----------------
-// - $queries         : <string> or <number> in the format: 
+// - $queries         : <string> or <number> in the format:
 //                      <min-width> <max-width> h <min-height> <max-height> <key> <value>
-// - $type            : <media-type> 
+// - $type            : <media-type>
 // - $query-fallback  : <string> selector class
 // - $breakpoints     : <map>
 @mixin mappy-bp($queries, $type: all, $query-fallback: null, $breakpoints: $breakpoints) {
@@ -35,7 +35,7 @@ $mappy-queries: () !default;
 
 // Mappy Query [Mixin]
 // -------------------
-// Output query from $mappy-queries map. 
+// Output query from $mappy-queries map.
 // $query : <string> from $mappy-queries key
 @mixin mappy-query($query, $mappy-queries: $mappy-queries) {
   @if not map-has-key($mappy-queries, $query) {
@@ -43,7 +43,7 @@ $mappy-queries: () !default;
   }
 
   $mappy-map: map-get($mappy-queries, $query);
-  
+
   @media #{map-get($mappy-map, type)} and #{map-get($mappy-map, media-string)} {
     @content;
   }
@@ -79,8 +79,8 @@ $mappy-queries: () !default;
     }
   }
   $_return: (
-    type: $type, 
-    media-string: inspect($media-string), 
+    type: $type,
+    media-string: inspect($media-string),
     query-fallback: $query-fallback
   );
 
@@ -130,7 +130,7 @@ $mappy-queries: () !default;
     $_return: map-merge($_return, (max-width: $_maxw));
     $queries: set-nth($queries, 2, null);
   }
-  
+
   // Checks for height queries
   $_h: index($queries, h) or index($queries, height);
 
@@ -180,7 +180,7 @@ $mappy-queries: () !default;
 
 // Mappy Validate [Function]
 // -------------------------
-// Checks if $query given is one of the following: 
+// Checks if $query given is one of the following:
 // 1) Is a $key in the $breakpoints map
 // 2) Is a number
 // 3) Is a "max", "max-width" or "max-height" string
@@ -212,10 +212,12 @@ $mappy-queries: () !default;
 @function mappy-convert-to-em($val) {
   @if unit($val) == "px" or $val == 0 {
     @return mappy-em($val);
-  }
-
-  @else {
-    @error "Breakpoint value must have a unit if it's a number";
+  } @else if unit($val) == "em" {
+    @return $val;
+  } @else if unit($val) == "rem" {
+    @return mappy-strip-unit($val) * 1em;
+  } @else {
+    @error unquote("Breakpoint value must have a unit if it's a number");
   }
 }
 
@@ -228,4 +230,8 @@ $mappy-queries: () !default;
     @return 0;
   }
   @return $target / $context * 1em;
+}
+
+@function mappy-strip-unit($num) {
+  @return $num / ($num * 0 + 1);
 }

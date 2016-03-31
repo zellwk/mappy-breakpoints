@@ -32,5 +32,13 @@
   "bugs": {
     "url": "https://github.com/zellwk/mappy-breakpoints/issues"
   },
-  "homepage": "https://github.com/zellwk/mappy-breakpoints#readme"
+  "homepage": "https://github.com/zellwk/mappy-breakpoints#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.2.0",
+    "sass-true": "^2.0.3"
+  }
 }
