@@ -246,10 +246,10 @@ $mappy-queries: () !default;
   @for $i from 1 through $len {
     $e: nth($list, $i);
     @if $i == $len {
-      $res: $res#{$e};
+      $res: unquote("#{$res}#{$e}");
     }
     @else {
-      $res: $res#{$e}#{$glue};
+      $res: unquote("#{$res}#{$e}#{$glue}");
     }
   }
 
