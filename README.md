@@ -143,7 +143,7 @@ If a two values are provided, mappy-breakpoints will produce a `min-width` and `
 
 If a `max-width` or `max` string is provided, `mappy-breakpoints()` will produce a `max-width` query.
 
-~~~
+~~~scss
 // Max Width Query
 // ---------------
 
@@ -190,6 +190,7 @@ It can use the same `$breakpoints` map as well.
 
 If a `max-height` or `max` string is provided, `mappy-breakpoints()` will produce a `max-height` query.
 
+~~~scss
 // Max Height Query
 // ---------------
 
