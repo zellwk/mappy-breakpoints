@@ -2,7 +2,7 @@
 
 Mappy Breakpoints is a breakpoint mixin I have hacked together to streamline web development when using a Sass map to hold the breakpoint plugin. [Here's why I made this mixin](http://www.zell-weekeat.com/mappy-breakpoints)
 
-Here's a quick example. Say you a breakpoints map and you want to grab do a `min-width` query for `small` and `max-width` query for `large`.
+Here's a quick example. Say you have a breakpoints map and you want to grab do a `min-width` query for `small` and `max-width` query for `large`.
 
 ~~~scss
 $breakpoints: (
