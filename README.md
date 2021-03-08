@@ -59,7 +59,7 @@ Mappy-breakpoints takes in 4 arguments. Only the first one is mandatory. The res
 }
 ~~~
 
-Most of the time you'll only be working with the `$queries` argument. Take a look at the [queries](#queries)section for more info.
+Most of the time you'll only be working with the `$queries` argument. Take a look at the [queries](#queries) section for more info.
 
 ### Mappy-query(Mixin)
 
