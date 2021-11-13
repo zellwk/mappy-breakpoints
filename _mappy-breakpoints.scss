@@ -5,6 +5,8 @@
 //
 // @author Zell Liew
 // =================
+@use "sass:math";
+
 $breakpoints: () !default;
 $mappy-queries: () !default;
 
@@ -229,11 +231,11 @@ $mappy-queries: () !default;
   @if $target == 0 {
     @return 0;
   }
-  @return $target / $context * 1em;
+  @return math.div($target, $context) * 1em;
 }
 
 @function mappy-strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, $num * 0 + 1);
 }
 
 // Implode [Function]
