@@ -1,40 +1,16 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var mocha = require('gulp-mocha');
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
+import gulp from 'gulp'
+import gulpSass from 'gulp-sass'
+import dartSass from 'sass'
 
-function customPlumber(errTitle) {
-  return plumber({
-    errorHandler: notify.onError({
-      // Customizing error title
-      title: errTitle || 'Error running Sass',
-      message: 'Error: <%= error %>',
-    })
-  });
-};
+const sass = gulpSass(dartSass)
 
-gulp.task('sass', function() {
-  gulp.src('*.scss')
-    .pipe(customPlumber())
-    .pipe(sass({
-      includePaths: [
-        './bower_components',
-        './node_modules'
-      ],
-    }))
-    .pipe(gulp.dest('css'));
-});
+export function css () {
+  return gulp
+    .src('*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('css'))
+}
 
-gulp.task('mocha', function() {
-  gulp.src('test/**/*.js')
-    .pipe(customPlumber())
-    .pipe(mocha({reporter: 'nyan'}))
-});
-
-gulp.task('watch', ['mocha'], function() {
-  gulp.watch('test/**/*.scss', ['mocha']);
-  gulp.watch('*.scss', ['sass', 'mocha']);
-});
-
-gulp.task('default', ['watch']);
+export const watch = function () {
+  gulp.watch('*.scss', { ignoreInitial: false }, css)
+}

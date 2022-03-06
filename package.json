@@ -4,12 +4,14 @@
   "authors": ["Zell Liew <zellwk@gmail.com>"],
   "main": "_mappy-breakpoints.scss",
   "keywords": ["breakpoints", "sass", "sass-maps", "maps"],
+  "type": "module",
   "license": "MIT",
-  "ignore": ["**/.*", "node_modules", "test", "tests"],
   "description": "Mappy Breakpoints is a breakpoint mixin I have hacked together to streamline web development when using a Sass map to hold the breakpoint plugin. [Here's why I made this mixin](http://www.zell-weekeat.com/mappy-breakpoints)",
   "scripts": {
+    "dev": "gulp watch",
     "release": "np --no-publish && npm publish"
   },
+  "ignore": ["**/.*", "node_modules", "test", "tests"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zellwk/mappy-breakpoints.git"
@@ -20,11 +22,9 @@
   },
   "homepage": "https://github.com/zellwk/mappy-breakpoints#readme",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.2.0",
-    "sass-true": "^2.0.3"
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "jest": "^27.5.1",
+    "sass": "^1.49.9"
   }
 }
