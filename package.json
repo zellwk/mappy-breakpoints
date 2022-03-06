@@ -9,6 +9,7 @@
   "description": "Mappy Breakpoints is a breakpoint mixin I have hacked together to streamline web development when using a Sass map to hold the breakpoint plugin. [Here's why I made this mixin](http://www.zell-weekeat.com/mappy-breakpoints)",
   "scripts": {
     "dev": "gulp watch",
+    "test": "",
     "release": "np --no-publish && npm publish"
   },
   "ignore": ["**/.*", "node_modules", "test", "tests"],
