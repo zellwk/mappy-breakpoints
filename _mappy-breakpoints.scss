@@ -58,6 +58,57 @@ $mappy-queries: () !default;
   }
 }
 
+
+// Mappy Query OR [Mixin]
+// -------------------
+// Output query from $mappy-queries map.
+// $query : <string> from $mappy-queries key
+// @example : @include mappy-query-or(mobile 'or' tablet-portrait 'not' tablet);
+@mixin mappy-query-or($queries, $mappy-queries: $mappy-queries) {
+  //@debug $queries;
+  //@debug type_of($queries);
+  //@debug length($queries);
+  //@debug nth($queries, 1);
+
+  /**
+   * Create new list for storing media-strings
+   */
+  $mq-string: ();
+
+  @each $mq in $queries {
+
+    //@debug $mq;
+    //@debug type_of($mq);
+    //@debug (index('or' 'and' 'not', $mq) == null);
+
+    @if (index('or' 'and' 'not', $mq) == null) {
+
+      $bp-map: map-get($mappy-queries, $mq);
+      $bp: map-get($bp-map, media-string);
+
+      //@debug $bp;
+
+      $mq-string: append($mq-string, unquote('all and ' + $bp));
+    } @else if $mq == 'or' {
+      $mq-string: append($mq-string, unquote(','));
+    } @else if $mq == 'and' {
+      $mq-string: append($mq-string, unquote('and'));
+    } @else if $mq == 'not' {
+      $mq-string: append($mq-string, unquote('not'));
+    }
+  }
+
+  $mq-string: implode($mq-string);
+  @debug $mq-string;
+
+  /**
+   * Write media query in the css
+   */
+  @media #{$mq-string} {
+    @content;
+  }
+}
+
 // Mappy BP [Function]
 // -------------------
 // Returns a map with 3 keys
