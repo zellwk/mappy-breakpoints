@@ -128,7 +128,7 @@ $mappy-queries: () !default;
   }
 
   @if $_maxw {
-    $_maxw: mappy-convert-to-em($_maxw - 1px);
+    $_maxw: mappy-convert-to-em($_maxw) - mappy-em(1px);
     $_return: map-merge($_return, (max-width: $_maxw));
     $queries: set-nth($queries, 2, null);
   }
@@ -153,7 +153,7 @@ $mappy-queries: () !default;
     }
 
     @if $_maxh {
-      $_maxh: mappy-convert-to-em($_maxh - 1px);
+      $_maxh: mappy-convert-to-em($_maxh) - mappy-em(1px);
       $_return: map-merge($_return, (max-height: $_maxh));
       $queries: set-nth($queries, $_h + 2, null);
     }
